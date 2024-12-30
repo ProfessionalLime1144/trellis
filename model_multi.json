@@ -1,0 +1,31 @@
+{
+    "images": [
+      {
+        "url": "https://pomf2.lain.la/f/t7d7rdne.webp"
+      },
+      {
+        "url": "https://pomf2.lain.la/f/krpsh5z.webp"
+      },
+      {
+        "url": "https://pomf2.lain.la/f/oao1yxe9.webp"
+      },
+      {
+        "url": "https://pomf2.lain.la/f/sh8udc37.webp"
+      },
+      {
+        "url": "https://pomf2.lain.la/f/v7pg060y.webp"
+      },
+      {
+        "url": "https://pomf2.lain.la/f/f9hpm8em.webp"
+      }
+    ],
+    "seed": 0,
+    "randomize_seed": true,
+    "ss_guidance_strength": 7.5,
+    "ss_sampling_steps": 12,
+    "slat_guidance_strength": 3.0,
+    "slat_sampling_steps": 12,
+    "mesh_simplify": 0.95,
+    "texture_size": 1024,
+    "preprocess_image": true
+}

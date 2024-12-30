@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "properties": {
+    "readme": {
+      "type": "string",
+      "title": "Structured 3D Latents for Scalable and Versatile 3D Generation",
+      "author": "Jianfeng Xiang, Zelong Lv, Sicheng Xu, Yu Deng, Ruicheng Wang, Bowen Zhang, Dong Chen, Xin Tong, Jiaolong Yang",
+      "page": "https://trellis3d.github.io/",
+      "code": "https://github.com/Microsoft/TRELLIS",
+      "paper": "https://arxiv.org/abs/2412.01506",
+      "jupyter": "https://github.com/camenduru/TRELLIS-jupyter",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/trellis.ipynb",
+      "tags": [
+        "Image to 3D"
+      ],
+      "widget": "readme"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "upload": {
+            "type": "string",
+            "widget": "upload",
+            "upload_url": "https://litterbox.catbox.moe/resources/internals/api.php",
+            "property": "url"
+          },
+          "url": {
+            "type": "string",
+            "description": "Input Image URL",
+            "widget": "textarea"
+          }
+        }
+      }
+    },
+    "seed": {
+      "type": "integer",
+      "description": "seed"
+    },
+    "randomize_seed": {
+      "type": "boolean",
+      "description": "Randomize Seed"
+    },
+    "ss_guidance_strength": {
+      "type": "number",
+      "description": "Guidance Strength"
+    },
+    "ss_sampling_steps": {
+      "type": "integer",
+      "description": "Sampling Steps"
+    },
+    "slat_guidance_strength": {
+      "type": "number",
+      "description": "Slat Guidance Strength"
+    },
+    "slat_sampling_steps": {
+      "type": "integer",
+      "description": "Slat Sampling Steps"
+    },
+    "mesh_simplify": {
+      "type": "number",
+      "description": "Mesh Simplify"
+    },
+    "texture_size": {
+      "type": "integer",
+      "description": "Texture Size"
+    },
+    "preprocess_image": {
+      "type": "boolean",
+      "description": "Preprocess Image"
+    },
+    "example": {
+      "type": "string",
+      "image1": "https://fakeimg.pl/512x512/282828/eae0d0/?text=input#.png",
+      "image2": "https://files.catbox.moe/byti8t.png",
+      "image3": "https://fakeimg.pl/512x512/282828/eae0d0/?text=output#.png",
+      "image4": "https://files.catbox.moe/vwcmb3.mp4",
+      "video_aspect_ratio": "100%",
+      "widget": "example"
+    }
+  },
+  "buttons": [
+    {
+      "id": "enter",
+      "label": "🥪 Enter"
+    }
+  ]
+}
