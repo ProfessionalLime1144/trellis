@@ -10,7 +10,7 @@
       "code": "https://github.com/Microsoft/TRELLIS",
       "paper": "https://arxiv.org/abs/2412.01506",
       "jupyter": "https://github.com/camenduru/TRELLIS-jupyter",
-      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/trellis.ipynb",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/trellis-multi.ipynb",
       "tags": [
         "Image to 3D"
       ],
