@@ -27,7 +27,7 @@ RUN pip install torch==2.5.1+cu124 torchvision==0.20.1+cu124 torchaudio==2.5.1+c
     pip install xformers==0.0.28.post3 && \
     pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.6.3/flash_attn-2.6.3+cu123torch2.3cxx11abiFALSE-cp310-cp310-linux_x86_64.whl && \
     pip install opencv-contrib-python imageio imageio-ffmpeg ffmpeg-python av runpod && \
-    pip install easydict rembg onnxruntime onnxruntime-gpu numpy==2.0.0 plyfile huggingface-hub safetensors && \
+    pip install easydict rembg onnxruntime onnxruntime-gpu numpy==2.0.0 plyfile huggingface-hub transformers safetensors && \
     pip install git+https://github.com/NVlabs/nvdiffrast trimesh xatlas pyvista pymeshfix igraph spconv-cu120 && \
     pip install https://github.com/camenduru/wheels/releases/download/3090/kaolin-0.17.0-cp310-cp310-linux_x86_64.whl && \
     pip install https://github.com/camenduru/wheels/releases/download/3090/diso-0.1.4-cp310-cp310-linux_x86_64.whl && \
