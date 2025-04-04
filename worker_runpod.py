@@ -218,6 +218,7 @@ def generate(input):
         except:
             pass
         return {"jobId": job_id, "result": f"FAILED: {str(e)}", "status": "FAILED"}
+    """
     finally:
         if os.path.exists("/content/trellis-tost.mp4"):
             os.remove("/content/trellis-tost.mp4")
@@ -225,5 +226,4 @@ def generate(input):
             os.remove("/content/trellis-tost.glb")
         if os.path.exists("/content/trellis-tost.png"):
             os.remove("/content/trellis-tost.png")
-"""
 runpod.serverless.start({"handler": generate})
