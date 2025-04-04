@@ -135,9 +135,30 @@ def generate(input):
                                     slat_guidance_strength=slat_guidance_strength,
                                     slat_sampling_steps=slat_sampling_steps)
     glb_path = extract_glb(state=state, mesh_simplify=mesh_simplify, texture_size=texture_size)
+    
+    return {
+        "status": "success",
+        "files": {
+            "video": {
+                "filename": "output.mp4",
+                "data": encode_file("/content/trellis-tost.mp4"),
+                "type": "video/mp4"
+            },
+            "model_glb": {
+                "filename": "model.glb",
+                "data": encode_file("/content/trellis-tost.glb"),
+                "type": "model/gltf-binary"
+            },
+            "preview_png": {
+                "filename": "preview.png",
+                "data": encode_file("/content/trellis-tost.png"),
+                "type": "image/png"
+            }
+        }
 
-    result = ["/content/trellis-tost.mp4", ["/content/trellis-tost.glb", "/content/trellis-tost.png"]]
-    try:
+        # result = ["/content/trellis-tost.mp4", ["/content/trellis-tost.glb", "/content/trellis-tost.png"]]
+
+"""    try:
         notify_uri = values['notify_uri']
         del values['notify_uri']
         notify_token = values['notify_token']
@@ -199,5 +220,5 @@ def generate(input):
             os.remove("/content/trellis-tost.glb")
         if os.path.exists("/content/trellis-tost.png"):
             os.remove("/content/trellis-tost.png")
-
+"""
 runpod.serverless.start({"handler": generate})
