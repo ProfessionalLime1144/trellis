@@ -14,6 +14,11 @@ from trellis.utils import render_utils, postprocessing_utils
 MAX_SEED = np.iinfo(np.int32).max
 TMP_DIR = "/content"
 
+# Read and encode files
+def encode_file(file_path):
+    with open(file_path, "rb") as f:
+        return base64.b64encode(f.read()).decode('utf-8')
+
 def preprocess_image(image_path: str) -> Tuple[str, Image.Image]:
     trial_id = "trellis-tost"
     image = Image.open(image_path).convert("RGBA")
