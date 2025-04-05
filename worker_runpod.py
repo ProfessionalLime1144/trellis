@@ -15,6 +15,20 @@ from trellis.utils import render_utils, postprocessing_utils
 MAX_SEED = np.iinfo(np.int32).max
 TMP_DIR = "/content"
 
+def decode_base64_image(base64_str: str, output_path: str) -> str:
+    """Decode base64 image and save to file, return the file path."""
+    try:
+        # Remove data URL prefix if present
+        if base64_str.startswith('data:image'):
+            base64_str = base64_str.split(',', 1)[1]
+        
+        image_data = base64.b64decode(base64_str)
+        with open(output_path, 'wb') as f:
+            f.write(image_data)
+        return output_path
+    except Exception as e:
+        raise Exception(f"Failed to decode base64 image: {str(e)}")
+
 # Read and encode files
 def encode_file(file_path):
     try:
@@ -168,7 +182,15 @@ def generate(input):
         
         # Process input
         input_image = values['input_image']
-        input_image = download_file(url=input_image, save_dir='/content', file_name='input_image')
+        
+        # Check if input is URL or base64
+        if input_image.startswith(('http://', 'https://')):
+            # Handle URL case
+            input_image_path = download_file(url=input_image, save_dir='/content', file_name='input_image')
+        else:
+            # Handle base64 case
+            input_image_path = '/content/input_image.png'
+            decode_base64_image(input_image, input_image_path)
         
         seed = values['seed']
         randomize_seed = values['randomize_seed']
@@ -180,7 +202,7 @@ def generate(input):
         texture_size = values['texture_size']
 
         state, video_path = image_to_3d(
-            image_path=input_image, 
+            image_path=input_image_path, 
             seed=seed, 
             randomize_seed=randomize_seed, 
             ss_guidance_strength=ss_guidance_strength, 
@@ -243,6 +265,7 @@ def generate(input):
             "error": str(e),
             "traceback": error_trace
         }
+
         
 runpod.serverless.start({"handler": generate})
 """
