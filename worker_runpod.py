@@ -192,39 +192,10 @@ def generate(input):
         glb_path = extract_glb(state=state, mesh_simplify=mesh_simplify, texture_size=texture_size)
         
         # Prepare response
-        result = {
-            "status": "success",
-            "files": {
-                "video": {
-                    "filename": "output.mp4",
-                    "data": encode_file("/content/trellis-tost.mp4"),
-                    "type": "video/mp4"
-                },
-                "model_glb": {
-                    "filename": "model.glb",
-                    "data": encode_file("/content/trellis-tost.glb"),
-                    "type": "model/gltf-binary"
-                },
-                "preview_png": {
-                    "filename": "preview.png",
-                    "data": encode_file("/content/trellis-tost.png"),
-                    "type": "image/png"
-                }
-            }
-        }
-        
-        return result
-        
-    except Exception as e:
-        error_trace = traceback.format_exc()
-        print(f"Error in generate function: {error_trace}")
-        return {
-            "status": "error",
-            "error": str(e),
-            "traceback": error_trace
-        }
-    finally:
-        # Cleanup temporary files
+        video_file = encode_file("/content/trellis-tost.mp4")
+        glb_file = encode_file("/content/trellis-tost.glb")
+        image_file = encode_file("/content/trellis-tost.png")
+
         try:
             if os.path.exists("/content/trellis-tost.mp4"):
                 os.remove("/content/trellis-tost.mp4")
@@ -240,7 +211,39 @@ def generate(input):
                 os.remove("/content/input_image.jpeg")
         except Exception as cleanup_error:
             print(f"Error during cleanup: {str(cleanup_error)}")
-
+        
+        result = {
+            "status": "success",
+            "files": {
+                "video": {
+                    "filename": "output.mp4",
+                    "data": video_file,
+                    "type": "video/mp4"
+                },
+                "model_glb": {
+                    "filename": "model.glb",
+                    "data": glb_file,
+                    "type": "model/gltf-binary"
+                },
+                "preview_png": {
+                    "filename": "preview.png",
+                    "data": image_file,
+                    "type": "image/png"
+                }
+            }
+        }
+        
+        return result
+        
+    except Exception as e:
+        error_trace = traceback.format_exc()
+        print(f"Error in generate function: {error_trace}")
+        return {
+            "status": "error",
+            "error": str(e),
+            "traceback": error_trace
+        }
+        
 runpod.serverless.start({"handler": generate})
 """
         # result = ["/content/trellis-tost.mp4", ["/content/trellis-tost.glb", "/content/trellis-tost.png"]]
